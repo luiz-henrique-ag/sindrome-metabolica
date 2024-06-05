@@ -55,9 +55,12 @@ class _IpaqScreenState extends State<IpaqScreen> {
       child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: const Text('IPAQ Versão Curta'),
+            title: const Text('IPAQ Versão Curta', style: TextStyle(fontFamily: "Poppins", color: Colors.white)),
             bottomOpacity: 0.8,
             backgroundColor: const Color(0xFF662D91),
+            iconTheme: const IconThemeData(
+              color: Colors.white
+            ),
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -78,17 +81,19 @@ class _IpaqScreenState extends State<IpaqScreen> {
                       ),
                       const Padding(
                         padding: EdgeInsets.only(
-                            top: 10, right: 40, left: 40, bottom: 40),
-                        child: Row(
+                            top: 10, right: 20, left: 20, bottom: 40),
+                        child: Column(
                           children: [
                             Icon(
                               Icons.assignment,
                               color: Colors.deepPurple,
                             ),
                             Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.symmetric(horizontal: 2.0),
                               child: Text(
-                                  'Clique no ícone em cada campo para \nabrir o texto da questão.'),
+                                'Clique no ícone em cada campo para abrir o texto da questão.',
+                                textAlign: TextAlign.justify
+                              ),
                             )
                           ],
                         ),
@@ -410,7 +415,9 @@ class _IpaqScreenState extends State<IpaqScreen> {
                                                 content: const Text(
                                                     "Nos dias em que você fez essas atividades vigorosas por pelo menos 10 "
                                                     "minutos contínuos quanto tempo no total você gastou fazendo essas atividades "
-                                                    "por dia? "),
+                                                    "por dia? ",
+                                                    overflow: TextOverflow.clip,
+                                                    ),
                                                 actions: <Widget>[
                                                   TextButton(
                                                     child: const Text('Ok'),
@@ -506,7 +513,10 @@ class _IpaqScreenState extends State<IpaqScreen> {
                           },
                           child: const Text(
                             'Calcular',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white
+                            ),
                           ),
                         ),
                       ),

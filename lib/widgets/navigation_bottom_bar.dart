@@ -50,8 +50,7 @@ class _NavigationBottomBarState extends State<NavigationBottomBar> {
         ),
       ],
       selectedFontSize: 12,
-      selectedLabelStyle:
-          const TextStyle(color: Color(0xFFCC33CC), fontSize: 12),
+      selectedLabelStyle: const TextStyle(color: Color(0xFFCC33CC), fontSize: 12),
     );
   }
 }

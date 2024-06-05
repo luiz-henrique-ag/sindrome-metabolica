@@ -14,9 +14,11 @@ class _IavScreenState extends State<IavScreen> {
   TextEditingController pesoController = TextEditingController();
   TextEditingController trigliceridesController = TextEditingController();
   TextEditingController hdlController = TextEditingController();
+  var erro = false;
 
   @override
   Widget build(BuildContext context) {
+
     return Layout(
       title: 'Índice de Adiposidade Visceral (IAV)',
       child: Center(
@@ -192,6 +194,10 @@ class _IavScreenState extends State<IavScreen> {
                         fontFamily: "Poppins",
                       ),
                     ),
+                    erro == false ? 
+                      const SizedBox.shrink() 
+                      : 
+                      const Text('Preencha os campos corretamente.', style: TextStyle(color: Colors.red),)
                   ],
                 )),
             const SizedBox(
@@ -237,9 +243,18 @@ class _IavScreenState extends State<IavScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/iav_resultado');
+                      var peso = context.read<VariaveisProvider>().peso;
+                      var triglicerides = context.read<VariaveisProvider>().triglicerides;
+                      var hdl = context.read<VariaveisProvider>().hdl;
+                      if(peso != 0 && triglicerides != 0 && hdl != 0){
+                        Navigator.pushNamed(context, '/iav_resultado');
+                      }
+                      else{
+                        setState(() {
+                          erro = true;
+                        });
+                      }
                     },
-                    //padding: EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 10),
                     child: const Text(
                       'Continuar',
                       style: TextStyle(

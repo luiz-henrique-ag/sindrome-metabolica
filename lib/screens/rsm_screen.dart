@@ -66,7 +66,7 @@ class RsmScreen extends StatelessWidget {
                               );
                             }).toList()),
                       ),
-                      Row(
+                      Wrap(
                         children: [
                           const Text('Prática de Atividade Física:'),
                           TextButton.icon(

@@ -14,6 +14,7 @@ class BriScreen extends StatefulWidget {
 class _BriScreenState extends State<BriScreen> {
   TextEditingController caController = TextEditingController();
   TextEditingController alturaController = TextEditingController();
+  var erro = false;
 
   @override
   void dispose() {
@@ -58,7 +59,7 @@ class _BriScreenState extends State<BriScreen> {
           children: <Widget>[
             Padding(
                 padding:
-                    EdgeInsets.only(left: 40, right: 40, top: 10, bottom: 5),
+                  const EdgeInsets.only(left: 40, right: 40, top: 10, bottom: 5),
                 child: Image.asset(
                   'assets/iconeaba1.png',
                   height: 60,
@@ -143,7 +144,6 @@ class _BriScreenState extends State<BriScreen> {
               padding: const EdgeInsets.only(
                   left: 40, right: 40, top: 20, bottom: 20),
               child: Text(
-                // 'BRI: ' + estado.briLabel,
                 'BRI: ${retornaCalculo()}',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
@@ -152,6 +152,10 @@ class _BriScreenState extends State<BriScreen> {
                     fontSize: 18),
               ),
             ),
+            erro == false ? 
+                const SizedBox.shrink() 
+                : 
+                const Text('Preencha os campos corretamente.', style: TextStyle(color: Colors.red),),
             const SizedBox(
               height: 20,
             ),
@@ -194,7 +198,16 @@ class _BriScreenState extends State<BriScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/bri_resultado');
+                      var ca = context.read<VariaveisProvider>().ca;
+                      var altura = context.read<VariaveisProvider>().altura;
+                      if(ca != 0 && altura !=0){
+                        Navigator.pushNamed(context, '/bri_resultado');
+                      }
+                      else{
+                        setState(() {
+                          erro = true;
+                        });
+                      }
                     },
                     child: const Text(
                       'Continuar',
