@@ -9,8 +9,14 @@ import 'package:sindromemetabolica_fase2/screens/ipaq_screen.dart';
 import 'package:sindromemetabolica_fase2/screens/principal_screen.dart';
 import 'package:sindromemetabolica_fase2/screens/registros_screen.dart';
 import 'package:sindromemetabolica_fase2/screens/rsm_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

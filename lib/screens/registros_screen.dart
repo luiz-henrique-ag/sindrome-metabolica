@@ -1,3 +1,4 @@
+
 import 'package:intl/intl.dart';
 import 'package:sindromemetabolica_fase2/widgets/navigation_bottom_bar.dart';
 import 'package:flutter/material.dart';
